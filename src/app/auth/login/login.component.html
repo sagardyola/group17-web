@@ -1,0 +1,35 @@
+<div class="">
+  <h2>Login</h2>
+  <p>Please login here</p>
+  <form #loginForm="ngForm" class="form-group">
+    <label for="username">Username</label>
+    <input class="form-control" type="text" placeholder="Username" [(ngModel)]="user.username" name="username" required
+      #username="ngModel">
+
+    <!-- #uname is template variable....template variable banauda controller ma bhako name use garna mildaina -->
+    <div class="danger" *ngIf="!username.valid && username.dirty">
+      required field*
+    </div>
+
+
+    <label for="password">Password</label>
+    <input class="form-control" type="password" placeholder="Password" [(ngModel)]="user.password" name="password"
+      required #password="ngModel">
+    <div class="danger" [hidden]="password.valid || password.pristine">
+      required field*
+    </div>
+
+    <!-- Event binding
+    <button [disabled]="loginForm.valid" *ngIf="!submitting" (click)="login()" class="btn btn-primary">Login</button>
+    <button *ngIf="submitting" class="btn btn-info">Loggin in</button> -->
+
+    <!-- Property binding -->
+    <button [disabled]="!loginForm.valid" [hidden]="submitting" (click)="login()" class="btn btn-primary">Login</button>
+    <button [hidden]="!submitting" class="btn btn-info">Loggin in</button>
+  </form>
+  <p>Don't have an account?</p>
+
+  <p>click<a [routerLink]="['/auth/register']"> here</a> to register</p>
+  <p>click<a routerLink="/auth/forgot-password">forgot password</a></p>
+
+</div>

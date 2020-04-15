@@ -1,0 +1,55 @@
+<div class="">
+  <h2>Register</h2>
+  <p>Please provide necessary details</p>
+  <form #registerForm="ngForm" class="form-group">
+    <label for="name">name</label>
+    <input class="form-control" type="text" placeholder="name" name="name" [(ngModel)]="user.name">
+    <label for="email">email</label>
+    <input class="form-control" type="text" placeholder="email" name="email" [(ngModel)]="user.email" required email
+      #email="ngModel">
+    <div class="danger" *ngIf="email.errors && email.dirty">
+      <div *ngIf="email.errors.required">required field*</div>
+      <div *ngIf="email.errors.email">
+        not a valid email
+      </div>
+    </div>
+    <label for="address">address</label>
+
+    <input class="form-control" type="text" placeholder="address" name="address" [(ngModel)]="user.address">
+    <label for="phoneNumber">phoneNumber</label>
+    <input class="form-control" type="text" placeholder="phoneNumber" name="phoneNumber" [(ngModel)]="user.phoneNumber">
+    <label for="username">username</label>
+    <input class="form-control" type="text" placeholder="username" name="username" [(ngModel)]="user.username">
+    <label for="password">password</label>
+    <input class="form-control" type="text" placeholder="password" name="password" [(ngModel)]="user.password"
+      [(ngModel)]="user.password" minlength="8" required #password="ngModel">
+
+    <div class="danger" *ngIf="password.errors && password.dirty">
+      <div *ngIf="password.errors.required">required field*</div>
+      <div *ngIf="password.errors.minlength">
+        weak password
+      </div>
+    </div>
+
+    <div *ngIf="password.valid">
+      show some tick mark
+    </div>
+
+
+    <label for="dob">dob</label>
+    <input class="form-control" type="text" placeholder="dob" name="dob" [(ngModel)]="user.dob">
+    <label for="gender">gender</label>
+    <input class="form-control" type="text" placeholder="gender" name="gender" [(ngModel)]="user.gender">
+
+    <button [disabled]="registerForm.invalid" (click)="submit()" *ngIf="!submitting"
+      class="btn btn-primary">Submit</button>
+
+    <button disabled *ngIf="submitting" class="btn btn-info">Submitting...</button>
+  </form>
+
+
+  <p>Already Registered?</p>
+  <p>back to<a routerLink="/auth/login"> login</a></p>
+
+
+</div>

@@ -1,0 +1,74 @@
+<div>
+  <h2>Edit Product</h2>
+
+  <p>Please enter all required fields</p>
+
+  <div *ngIf="isLoading">
+    <app-loader></app-loader>
+
+  </div>
+
+  <form #form="ngForm" class="form-group" *ngIf="!isLoading">
+    <label for="name">name</label>
+    <input type="text" placeholder="name" name="name" [(ngModel)]="product.name" class="form-control" required>
+
+    <label for="description">description</label>
+    <input type="text" placeholder="description" name="description" [(ngModel)]="product.description"
+      class="form-control">
+
+    <label for="brand">brand</label>
+    <input type="text" placeholder="brand" name="brand" [(ngModel)]="product.brand" class="form-control">
+
+    <label for="category">category</label>
+    <input type="text" placeholder="category" name="category" [(ngModel)]="product.category" class="form-control"
+      required>
+
+    <label for="color">color</label>
+    <input type="text" placeholder="color" name="color" [(ngModel)]="product.color" class="form-control">
+
+    <label for="price">price</label>
+    <input type="text" placeholder="price" name="price" [(ngModel)]="product.price" class="form-control">
+
+    <label for="model">model</label>
+    <input type="text" placeholder="model" name="model" [(ngModel)]="product.model" class="form-control">
+
+    <label for="weight">weight</label>
+    <input type="text" placeholder="weight" name="weight" [(ngModel)]="product.weight" class="form-control">
+
+    <label for="manuDate">manuDate</label>
+    <input type="text" placeholder="manuDate" name="manuDate" [(ngModel)]="product.manuDate" class="form-control">
+
+    <label for="expiryDate">expiryDate</label>
+    <input type="text" placeholder="expiryDate" name="expiryDate" [(ngModel)]="product.expiryDate" class="form-control">
+
+    <label for="tags">tags</label>
+    <input type="text" placeholder="tags" name="tags" [(ngModel)]="product.tags" class="form-control">
+
+    <input type="checkbox" name="discountedItem" [(ngModel)]="product.discountedItem">
+    <label for="discountedItem">discountedItem</label>
+    <div *ngIf="product.discountedItem">
+      <label for="discountType">discountType</label>
+      <input type="text" placeholder="discountType" name="discountType" [(ngModel)]="product.discountType"
+        class="form-control">
+
+      <label for="discount">discount</label>
+      <input type="text" placeholder="discount" name="discount" [(ngModel)]="product.discount" class="form-control">
+    </div>
+    <br>
+    <input type="checkbox" name="warrentyStatus" [(ngModel)]="product.warrentyStatus">
+    <label for="warrentyStatus">warrentyStatus</label>
+    <div *ngIf="product.discountedItem">
+      <label for="warrentyPeriod">warrentyPeriod</label>
+      <input type="text" placeholder="warrentyPeriod" name="warrentyPeriod" [(ngModel)]="product.warrentyPeriod"
+        class="form-control">
+    </div>
+    <label for="image">Image</label>
+    <img src="{{imgUrl}}{{product.image" alt="image.png" width="400px">
+    <input class="form-control" type="file" (change)="fileChanged($event)" name="image">
+
+
+    <br>
+    <button [disabled]="!form.valid" *ngIf="!submitting" class="btn btn-primary" (click)="submit()">Submit</button>
+    <button disabled *ngIf="submitting" class="btn btn-info">Submitting</button>
+  </form>
+</div>

@@ -1,0 +1,34 @@
+<h2>View products</h2>
+
+<div *ngIf="isLoading">
+  <app-loader></app-loader>
+</div>
+
+<table class="table" *ngIf="!isLoading">
+  <thead>
+    <th>S.N.</th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Brand</th>
+    <th>Price</th>
+    <th>Image</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products;let i=index;">
+      <td>{{i+1}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.category}}</td>
+      <td>{{product.brand}}</td>
+      <td *ngIf="product.price">{{product.price}}</td>
+      <td *ngIf="!product.price">N/A</td>
+      <td>
+        <img src="{{imgUrl}}{{product.image}}" alt="image.png" width="200px">
+      </td>
+      <td>
+        <button class="btn btn-info" routerLink="/product/edit/{{product._id}}">Edit</button>
+        <button class="btn btn-danger" (click)="remove(product._id,i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
