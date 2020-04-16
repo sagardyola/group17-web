@@ -27,8 +27,9 @@ export class AuthService {
 
     }
 
-    resetPassword(data: User) {
-        //http call
+    resetPassword(token: string, data: User) {
+        return this.http.post(this.url + 'reset-password/' + token, data, this.getHeaders());
+
     }
 
     private getHeaders() {

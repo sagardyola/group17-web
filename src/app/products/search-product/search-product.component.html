@@ -1,1 +1,61 @@
-<p>search-product works!</p>
+<div *ngIf="!results.length">
+  <h2>Search Product</h2>
+
+  <p>Please enter all required fields</p>
+  <form #form="ngForm" class="form-group">
+    <label for="category">category</label>
+    <select class="form-control" name="category" id="category" [(ngModel)]="product.category"
+      (change)="categoryChanged(product.category)" required>
+      <option value="" disabled>(Select Category)</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+    </select>
+
+    <div *ngIf="names.length">
+      <label for="name">name</label>
+      <select class="form-control" name="name" id="name" [(ngModel)]="product.name">
+        <option value="" disabled>(Select Name)</option>
+        <option *ngFor="let name of names" [value]="name.name">{{name.name}}</option>
+      </select>
+
+
+    </div>
+
+
+    <label for="brand">brand</label>
+    <input type="text" placeholder="brand" name="brand" [(ngModel)]="product.brand" class="form-control">
+
+
+    <label for="color">color</label>
+    <input type="text" placeholder="color" name="color" [(ngModel)]="product.color" class="form-control">
+
+    <label for="price">price</label>
+    <input type="text" placeholder="price" name="price" [(ngModel)]="product.price" class="form-control">
+
+    <label for="model">model</label>
+    <input type="text" placeholder="model" name="model" [(ngModel)]="product.model" class="form-control">
+
+    <label for="weight">weight</label>
+    <input type="text" placeholder="weight" name="weight" [(ngModel)]="product.weight" class="form-control">
+
+    <label for="manuDate">manuDate</label>
+    <input type="text" placeholder="manuDate" name="manuDate" [(ngModel)]="product.manuDate" class="form-control">
+
+    <label for="expiryDate">expiryDate</label>
+    <input type="text" placeholder="expiryDate" name="expiryDate" [(ngModel)]="product.expiryDate" class="form-control">
+
+    <label for="tags">tags</label>
+    <input type="text" placeholder="tags" name="tags" [(ngModel)]="product.tags" class="form-control">
+
+
+
+    <br>
+    <button [disabled]="!form.valid" *ngIf="!submitting" class="btn btn-primary" (click)="submit()">Submit</button>
+    <button disabled *ngIf="submitting" class="btn btn-info">Submitting</button>
+  </form>
+</div>
+
+
+<div *ngIf="results.length" class="">
+  <app-list-product (again)="resetSearch()" [inputData]="results"></app-list-product>
+  <!-- inputdata in ts file above constructor -->
+</div>

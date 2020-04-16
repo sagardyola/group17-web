@@ -40,6 +40,11 @@ export class ProductService {
 
     }
 
+    search(condition: any) {
+        return this.http.post(this.url + 'search', condition, this.getHeaders());
+
+    }
+
     upload(data: Product, files: any, method) {
         return Observable.create(observer => {
             var xhr = new XMLHttpRequest();

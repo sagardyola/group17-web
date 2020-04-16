@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ChatComponent } from './chat/chat.component';
 
 const userRouteConfig: Routes = [
     {
@@ -11,6 +12,10 @@ const userRouteConfig: Routes = [
     {
         path: 'change-pasword',
         component: ChangePasswordComponent
+    },
+    {
+        path: 'chat',
+        component: ChatComponent
     }
 ]
 

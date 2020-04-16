@@ -5,11 +5,12 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { FormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user.routing';
 import { SharedModule } from '../shared/shared.module';
+import { ChatComponent } from './chat/chat.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, ChangePasswordComponent],
+  declarations: [DashboardComponent, ChangePasswordComponent, ChatComponent],
   imports: [
     CommonModule,
     FormsModule,
